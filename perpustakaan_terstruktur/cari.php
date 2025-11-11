@@ -6,12 +6,10 @@ function cari($keyword)
         die("Koneksi gagal: " . mysqli_connect_error());
     }
 
-    // Pastikan keyword tidak kosong
     $keyword = mysqli_real_escape_string($link, $keyword);
     $query = "SELECT id, judul FROM buku WHERE judul LIKE '%$keyword%'";
     $result = mysqli_query($link, $query);
 
-    // Inisialisasi array kosong agar tidak undefined
     $listbuku = [];
 
     while ($row = mysqli_fetch_array($result)) {
@@ -53,3 +51,4 @@ function display($listbuku)
 <a href='./pinjam/pinjam.php?fitur=read'>Lihat Keranjang</a>
 <a href='index.php'>Kembali</a>
 <br>
+
